@@ -1,0 +1,9 @@
+<svg width="900" height="620" viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#0A56A8"/><stop offset="1" stop-color="#00A6D6"/></linearGradient></defs>
+<rect width="900" height="620" rx="42" fill="#F2F8FC"/><circle cx="730" cy="120" r="150" fill="#D9F1FF"/><circle cx="150" cy="510" r="110" fill="#CFEAFF"/>
+<rect x="72" y="85" width="756" height="450" rx="36" fill="white"/>
+<circle cx="450" cy="248" r="105" fill="url(#g)"/>
+<text x="450" y="283" text-anchor="middle" font-size="116" font-family="Arial, sans-serif" fill="white">❄</text>
+<text x="450" y="423" text-anchor="middle" font-size="46" font-weight="700" font-family="Arial, sans-serif" fill="#072C55">Aires acondicionados</text>
+<text x="450" y="474" text-anchor="middle" font-size="25" font-family="Arial, sans-serif" fill="#526B82">Piezas y accesorios</text>
+</svg>
