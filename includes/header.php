@@ -12,9 +12,22 @@ $page_desc = $page_desc ?? 'Venta de piezas, servicios de refrigeración, climat
     <title><?= e($page_title) ?></title>
     <meta name="description" content="<?= e($page_desc) ?>">
     <meta name="keywords" content="<?= e($site['seo_keywords']) ?>">
-    <meta name="theme-color" content="#0B4F9C">
+    <meta id="theme-color" name="theme-color" content="#0B4F9C">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <link rel="apple-touch-icon" href="assets/img/app-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        (function(){
+            try {
+                var savedTheme = localStorage.getItem('prae-theme');
+                document.documentElement.dataset.theme = savedTheme || 'light';
+            } catch (error) {
+                document.documentElement.dataset.theme = 'light';
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body data-whatsapp="<?= e($site['whatsapp']) ?>">
@@ -30,10 +43,6 @@ $page_desc = $page_desc ?? 'Venta de piezas, servicios de refrigeración, climat
                 <a class="brand" href="index.php" aria-label="Ir al inicio">
                     <img src="assets/img/logo-prae-header.png" alt="Logo PRAE Refrigeración">
                 </a>
-                <button class="nav-toggle" type="button" aria-controls="main-menu" aria-expanded="false">
-                    <span></span><span></span><span></span>
-                    <strong>Menú</strong>
-                </button>
                 <ul class="main-menu" id="main-menu">
                     <li><a class="<?= is_active('productos.php') ?>" href="productos.php">Productos</a></li>
                     <li><a class="<?= is_active('ofertas.php') ?>" href="ofertas.php">Ofertas</a></li>
@@ -44,6 +53,16 @@ $page_desc = $page_desc ?? 'Venta de piezas, servicios de refrigeración, climat
                     <li><a class="<?= is_active('sobre-nosotros.php') ?>" href="sobre-nosotros.php">Nosotros</a></li>
                     <li><a class="<?= is_active('contacto.php') ?>" href="contacto.php">Contacto</a></li>
                 </ul>
+                <div class="nav-controls">
+                    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Cambiar a modo oscuro" aria-pressed="false" title="Cambiar tema">
+                        <span class="theme-icon theme-icon--sun" aria-hidden="true">☀</span>
+                        <span class="theme-icon theme-icon--moon" aria-hidden="true">☾</span>
+                    </button>
+                    <button class="nav-toggle" type="button" aria-controls="main-menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                        <strong>Menú</strong>
+                    </button>
+                </div>
             </div>
         </nav>
     </header>

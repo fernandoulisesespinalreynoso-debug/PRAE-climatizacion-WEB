@@ -1,4 +1,37 @@
 (function(){
+  const root = document.documentElement;
+  const header = document.querySelector('.site-header');
+  const themeMeta = document.querySelector('#theme-color');
+  const themeToggle = document.querySelector('[data-theme-toggle]');
+
+  function applyTheme(theme){
+    const nextTheme = theme === 'dark' ? 'dark' : 'light';
+    root.dataset.theme = nextTheme;
+    if(themeMeta){
+      themeMeta.setAttribute('content', nextTheme === 'dark' ? '#071827' : '#0B4F9C');
+    }
+    if(themeToggle){
+      const dark = nextTheme === 'dark';
+      themeToggle.setAttribute('aria-pressed', dark ? 'true' : 'false');
+      themeToggle.setAttribute('aria-label', dark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+      themeToggle.setAttribute('title', dark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+    }
+  }
+
+  applyTheme(root.dataset.theme || 'light');
+
+  if(themeToggle){
+    themeToggle.addEventListener('click', () => {
+      const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+      try {
+        localStorage.setItem('prae-theme', nextTheme);
+      } catch (error) {
+        // Si el navegador bloquea localStorage, el cambio visual sigue activo.
+      }
+    });
+  }
+
   const menu = document.querySelector('#main-menu');
   const toggle = document.querySelector('.nav-toggle');
   if(toggle && menu){
@@ -13,10 +46,13 @@
   }
 
   const topBtn = document.querySelector('.scroll-top');
-  window.addEventListener('scroll', () => {
-    if(!topBtn) return;
-    topBtn.classList.toggle('show', window.scrollY > 520);
-  });
+  function syncScrollState(){
+    const scrolled = window.scrollY > 22;
+    if(header){ header.classList.toggle('is-scrolled', scrolled); }
+    if(topBtn){ topBtn.classList.toggle('show', window.scrollY > 520); }
+  }
+  window.addEventListener('scroll', syncScrollState, {passive:true});
+  syncScrollState();
   if(topBtn){
     topBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
   }
@@ -158,6 +194,21 @@
       renderComments();
     });
     renderComments();
+  }
+
+  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.16});
+    document.querySelectorAll('.section, .ofertas-section').forEach(section => {
+      section.classList.add('scroll-reveal');
+      revealObserver.observe(section);
+    });
   }
 
   function escapeHtml(str){
