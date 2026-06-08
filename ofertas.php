@@ -16,7 +16,7 @@ require __DIR__ . '/includes/header.php';
 </section>
 <section class="ofertas-section">
     <div class="section-header">
-        <div class="tag">Ofertas disponibles</div>
+        <div class="tag">Ofertas disponiblesss</div>
         <h2>Ofertas activas</h2>
     </div>
     <div class="container">
