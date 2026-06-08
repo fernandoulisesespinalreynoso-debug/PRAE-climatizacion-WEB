@@ -6,7 +6,7 @@ require __DIR__ . '/includes/admin-header.php';
 <div class="card">
     <h3>Agregar trabajo realizado</h3>
     <p class="notice">Preparado para subir imagen o colocar URL de video cuando se conecte el backend final.</p>
-    <form class="form-grid">
+    <form class="form-grid" id="admin-form">
         <div class="field"><label>Título</label><input placeholder="Ej.: Mantenimiento de aire residencial"></div>
         <div class="field"><label>Tipo</label><select><option>Aire acondicionado</option><option>Nevera</option><option>Refrigerador</option><option>Mantenimiento</option></select></div>
         <div class="field field--full"><label>Imagen / URL</label><input placeholder="https://..."></div>

@@ -6,7 +6,7 @@ require __DIR__ . '/includes/admin-header.php';
 <div class="card">
     <h3>Agregar / editar producto</h3>
     <p class="notice">Formulario visual listo para conectar a base de datos. Por ahora no guarda cambios.</p>
-    <form class="form-grid">
+    <form class="form-grid" id="admin-form">
         <div class="field"><label>Nombre del producto</label><input placeholder="Ej.: Compresor para nevera"></div>
         <div class="field"><label>Categoría</label><select><option>Aires acondicionados</option><option>Neveras</option><option>Refrigeradores</option><option>Herramientas</option><option>Refrigerantes</option></select></div>
         <div class="field"><label>Precio</label><input type="number" placeholder="Opcional"></div>

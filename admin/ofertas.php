@@ -6,7 +6,7 @@ require __DIR__ . '/includes/admin-header.php';
 <div class="card">
     <h3>Crear oferta</h3>
     <p class="notice">Preparado para ofertas con imagen, inicio, finalización y opción de destacar en inicio.</p>
-    <form class="form-grid">
+    <form class="form-grid" id="admin-form">
         <div class="field"><label>Título</label><input placeholder="Nombre de la oferta"></div>
         <div class="field"><label>Etiqueta</label><input placeholder="Destacada, combo, técnicos..."></div>
         <div class="field"><label>Fecha de inicio</label><input type="date"></div>

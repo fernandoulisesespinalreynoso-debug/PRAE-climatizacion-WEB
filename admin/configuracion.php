@@ -6,7 +6,7 @@ require __DIR__ . '/includes/admin-header.php';
 <div class="card">
     <h3>Información general</h3>
     <p class="notice">Aquí luego se editará el contacto, redes sociales, logo, horario, ubicación y textos principales.</p>
-    <form class="form-grid">
+    <form class="form-grid" id="admin-form">
         <div class="field"><label>Nombre de la empresa</label><input value="<?= htmlspecialchars($site['brand']) ?>"></div>
         <div class="field"><label>Eslogan</label><input value="<?= htmlspecialchars($site['slogan']) ?>"></div>
         <div class="field"><label>WhatsApp</label><input value="<?= htmlspecialchars($site['whatsapp']) ?>"></div>

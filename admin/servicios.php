@@ -6,7 +6,7 @@ require __DIR__ . '/includes/admin-header.php';
 <div class="card">
     <h3>Agregar servicio</h3>
     <p class="notice">Formulario preparado para editar servicios, imágenes y explicaciones.</p>
-    <form class="form-grid">
+    <form class="form-grid" id="admin-form">
         <div class="field"><label>Título</label><input placeholder="Ej.: Mantenimiento preventivo"></div>
         <div class="field"><label>Icono</label><input placeholder="Ej.: 🔧"></div>
         <div class="field field--full"><label>Imagen / URL</label><input placeholder="https://..."></div>
