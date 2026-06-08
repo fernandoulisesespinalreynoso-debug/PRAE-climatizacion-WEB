@@ -7,13 +7,18 @@ if (admin_logged_in()) {
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = trim($_POST['user'] ?? '');
-    $pass = trim($_POST['password'] ?? '');
-    if ($user === ADMIN_USER && $pass === ADMIN_PASS) {
-        $_SESSION['prae_admin'] = true;
-        header('Location: dashboard.php');
-        exit;
+    $pass = $_POST['password'] ?? '';
+
+    try {
+        if (authenticate_admin($user, $pass)) {
+            header('Location: dashboard.php');
+            exit;
+        }
+        $error = 'Usuario o contraseña incorrectos.';
+    } catch (PDOException $exception) {
+        error_log('Error de conexión con la base de datos: ' . $exception->getMessage());
+        $error = 'No se pudo conectar con la base de datos. Verifica que MySQL esté iniciado.';
     }
-    $error = 'Usuario o contraseña incorrectos.';
 }
 ?>
 <!doctype html>
@@ -31,9 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p>Acceso visual preparado para XAMPP.</p>
         <?php if ($error): ?><div class="alert"><?= htmlspecialchars($error) ?></div><?php endif; ?>
         <div class="field"><label>Usuario</label><input name="user" value="admin" autocomplete="username"></div>
-        <div class="field"><label>Contraseña</label><input name="password" type="password" placeholder="prae2026" autocomplete="current-password"></div>
+        <div class="field"><label>Contraseña</label><input name="password" type="password" placeholder="Contraseña" autocomplete="current-password"></div>
         <button class="btn" type="submit">Entrar</button>
-        <p class="notice">Usuario demo: <strong>admin</strong> / Clave demo: <strong>prae2026</strong>. Cambiar antes de publicar.</p>
+        <p class="notice">Acceso conectado a la tabla <strong>admins</strong>.</p>
     </form>
 </body>
 </html>
